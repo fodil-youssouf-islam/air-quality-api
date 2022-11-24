@@ -1,0 +1,30 @@
+#docker-compose.yml (Base)
+version: '3.8'
+
+x-app-service-template:
+  environment: &env
+    MODE: "PROD"
+    DB_HOST: "postgres"
+    DB_PORT: "5432"
+    DB_PASSWORD: "root"
+    DB_USERNAME: "postgres"
+    DB_NAME: 'air_quality_database'
+    AIR_QUALITY_API_URL: "air-quality-api:3000"
+
+services:
+  air-quality-api:
+    build:
+      context: ../air-quality-api
+    environment:
+      <<: *env
+    ports:
+      - "3000:3000"
+
+  postgres:
+    image: postgres:14
+    environment:
+      POSTGRES_PASSWORD: 'root'
+    ports:
+      - "5432:5432"
+    volumes:
+      - /home/data/postgres/data:/var/lib/postgresql/data
