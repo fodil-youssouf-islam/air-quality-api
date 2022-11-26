@@ -6,8 +6,9 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { AirQualityService } from "./services/air-quality.service";
 import { AirQuality } from "./entities/air-quality.entity";
 import { ScheduleModule } from "@nestjs/schedule";
+import { config } from "dotenv";
 
-require("dotenv").config();
+config();
 
 @Module({
   imports: [HttpModule,
