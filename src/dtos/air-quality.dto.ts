@@ -1,10 +1,13 @@
 import { ApiProperty } from "@nestjs/swagger";
 
-//TODO add Validators
 export class AirQualityDto {
-  @ApiProperty({ example: 2.352222, description: "The location longitude" })
-  longitude: number;
+  @ApiProperty({ required: false, example: "2.352222", description: "The location longitude" })
+    // @IsNumberString()
+    // @IsOptional()
+  longitude: string;
 
-  @ApiProperty({ example: 48.856613, description: "The location latitude" })
-  latitude: number;
+  @ApiProperty({ required: false, example: "48.856613", description: "The location latitude" })
+    // @IsNumberString()
+    // @IsOptional()
+  latitude: string;
 }
