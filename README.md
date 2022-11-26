@@ -3,7 +3,6 @@
 </p>
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
   <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
@@ -25,9 +24,13 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+The goal of this project is to create a REST API responsible for exposing “the air
+quality information” of a nearest city to GPS coordinates using iqair :
+https://www.iqair.com/fr/commercial/air-quality-monitors/airvisual-platform/ap
 
 ## Installation
+
+Before running API server, you should install postgres and set database config in the env file.
 
 ```bash
 $ npm install
@@ -39,11 +42,14 @@ $ npm install
 # development
 $ npm run start
 
-# watch mode
+# watch mode (install database manually)
 $ npm run start:dev
 
-# production mode
+# production mode (install database manually)
 $ npm run start:prod
+
+# production mode with docker compose (api + database)
+$ docker compose up
 ```
 
 ## Test
@@ -59,17 +65,14 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+## API
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If
-you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+#### /api
 
-## Stay in touch
+* `/` `GET` : Get Hello World! message
+* `/air-quality` `GET` : Get air quality (optional params `logitude` & `latitude`)
+* `/most-polluted` `GET` : Get most polluted air quality of paris stored locally
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+#### /doc
 
-## License
-
-Nest is [MIT licensed](LICENSE).
+* `/` `GET` : Get Doc

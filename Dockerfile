@@ -16,7 +16,5 @@ COPY . .
 # Creates a "dist" folder with the production build
 RUN npm run build
 
-CMD [ "bash", "dist/initdb.d" ]
-
 # Start the server using the production build
 CMD [ "node", "dist/main.js" ]
